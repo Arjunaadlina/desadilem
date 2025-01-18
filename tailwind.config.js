@@ -17,6 +17,7 @@ export default {
         merriweather: ['Merriweather', 'sans-serif'],
         montserratbold: ['Montserrat-Bold', 'sans-serif'],
         montserratreg: ['Montserrat-Regular', 'sans-serif'], 
+        montserratsem: ['Montserrat-SemiBold', 'sans-serif'], 
       },
     },
   },
