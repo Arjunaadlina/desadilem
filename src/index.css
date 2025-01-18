@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+  
+
+@font-face {
+    font-family: 'Merriweather'; /* Nama yang Anda gunakan di Tailwind */
+    src: url('/fonts/Merriweather-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Montserrat-Bold'; /* Nama yang Anda gunakan di Tailwind */
+    src: url('/fonts/montserrat/Montserrat-ExtraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Montserrat-Regular'; /* Nama yang Anda gunakan di Tailwind */
+    src: url('/fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

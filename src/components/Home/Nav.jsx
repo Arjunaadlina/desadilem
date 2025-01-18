@@ -1,0 +1,120 @@
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { IoMenuOutline, IoCloseOutline } from 'react-icons/io5';
+
+const navItems = [
+  { label: 'Beranda', href: '/' },
+  { label: 'Tentang', href: '/about' },
+  { label: 'Umkm', href: '/services' },
+  { label: 'Pariwisata', href: '/contact' },
+];
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 font-lucida ${
+        scrolled ? `bg-white backdrop-blur-md shadow-md  ` : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex-shrink-0"
+          >
+            <Link to="/" className="text-2xl font-bold text-secondary">
+              <img src={'/logofix.png'} alt="Logo" width={75} height={75} />
+            </Link>
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navItems.map((item) => (
+                <motion.div
+                  key={item.href}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    to={item.href}
+                    className={`px-3 py-2 rounded-md text-md font-medium transition-colors ${
+                      window.location.pathname === item.href
+                        ? 'text-white'
+                        : 'text-gray-600 hover:text-white '
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Collaboration Button */}
+          <div className="hidden md:flex w-32 py-2 bg-secondary rounded-md items-center justify-center cursor-pointer font-bold text-white">
+            <p>Collab</p>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-secondary hover:text-white hover:bg-indigo-50 focus:outline-none"
+            >
+              {isOpen ? <IoCloseOutline size={24} /> : <IoMenuOutline size={24} />}
+            </motion.button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white backdrop-blur-md"
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navItems.map((item) => (
+                <motion.div key={item.href} whileTap={{ scale: 0.95 }}>
+                  <Link
+                    to={item.href}
+                    className={`block px-3 py-2 rounded-md text-base font-medium ${
+                      window.location.pathname === item.href
+                        ? 'text-secondary bg-secondary/50'
+                        : 'text-gray-600 hover:text-white hover:bg-indigo-50'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navbar;
