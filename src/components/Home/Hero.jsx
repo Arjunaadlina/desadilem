@@ -4,7 +4,7 @@ import animationData from "../../assets/scrollanimate.json"
 function Hero() {
   return (
     <div
-      className="w-screen h-screen flex items-center justify-center flex-col bg-cover p-4"
+      className="w-screen h-screen flex items-center justify-center flex-col bg-cover p-4 bg-center"
       style={{ backgroundImage: "url('/heroo.jpg')" }}
     >
       <div className="">

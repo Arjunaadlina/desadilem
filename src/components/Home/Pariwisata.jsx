@@ -2,7 +2,7 @@ import Card from "../Pariwisata/Card"
 
 function Pariwisata() {
     return (
-        <div className="mt-8">
+        <div className="mt-20">
             <div className="p-4 mt-4 flex items-center justify-center flex-col">
                 <div>
                     <p className="text-secondary text-md font-montserratreg text-center">Temukan Pariwisata Lokal</p>

@@ -2,7 +2,7 @@ import React from 'react';
 
 function Card({ title, image, desc, locate }) {
   return (
-    <div className="w-[23rem] h-96 rounded-3xl overflow-hidden relative">
+    <div className="w-[22.5rem] h-96 rounded-3xl overflow-hidden relative ">
       <img src={image || '/bromo.jpg'} alt={title || 'Image'} className="w-full h-full object-cover" />
       <div className="absolute bottom-5 left-5 right-5 bg-white px-4 py-2 h-32 rounded-2xl">
         <p className="font-montserratreg text-sm mt-2 text-secondary truncate">{locate || 'Dilem'}</p>
