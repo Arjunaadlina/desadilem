@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import Lottie from "lottie-react";
-import animationData from "../../assets/scrollanimate.json"
+import animationData from "../../assets/scrollanimate.json";
+import { Element } from 'react-scroll';
 function Hero() {
   return (
+    <Element id="home" name="home">
     <div
       className="w-screen h-screen flex items-center justify-center flex-col bg-cover p-4 bg-center"
       style={{ backgroundImage: "url('/heroo.jpg')" }}
@@ -38,6 +40,7 @@ function Hero() {
         />
       </div>
     </div>
+    </Element>
   );
 }
 
