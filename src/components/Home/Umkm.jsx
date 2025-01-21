@@ -6,7 +6,7 @@ function Umkm() {
     return (
         <Element id="umkm" name="umkm" className="pt-20">
         <div className="p-4 flex items-center justify-center flex-col" id="umkm">
-            <div>
+            <div className="flex items-center justify-center flex-col">
                 <motion.p 
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -32,8 +32,8 @@ function Umkm() {
                 transition={{ duration: 0.7, delay: 0.4 }}
                 viewport={{ once: true }}
                 className="mt-8 flex justify-between items-center gap-6 flex-col md:flex-row">
-                <Card />
-                <Card />
+                <Card image={"/pare.jpg"} title={"Keripik Pare"} desc={"Keripik gurih dengan olahan pare dan rempah."}/>
+                <Card image={"/bayam.jpg"} title={"Keripik Bayam"} desc={"Keripik gurih dengan olahan bayam dan rempah."}/>
                 <Card />
             </motion.div>
         </div>

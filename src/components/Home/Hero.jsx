@@ -27,7 +27,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }} // Kembali ke posisi tengah
           transition={{ duration: 1, delay:0.5  }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Dilem adalah sebuah desa di wilayah Kecamatan Gondang Kabupaten Mojokerto, Provinsi Jawa Timur. Desa Dilem Kecamatan Gondang Kabupaten Mojokerto ada sebanyak kurang lebih 286 warga yang tinggal di Desa Dilem, dengan luas 0,09 km². 
         </motion.p>
       </div>
       

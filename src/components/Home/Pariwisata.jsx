@@ -28,7 +28,7 @@ function Pariwisata() {
                         className="font-montserratreg mt-1 text-gray-700">Pariwisata yang populer di desa dilem dan banyak digemari oleh masyarakat setempat maupun luar wilayah</motion.p>
                 </div>
                 <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.7, delay:0.5 }}
                     viewport={{ once: true }}
