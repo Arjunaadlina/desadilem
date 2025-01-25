@@ -29,10 +29,10 @@ function About() {
                 >
                 Ketahui sejarah dari desa dilem
                 </motion.p>
-                <div className="mt-12 flex gap-4 justify-center rounded-md flex-col xl:flex-row">
+                <div className="mt-12 flex gap-4 justify-center rounded-md flex-col xl:flex-row font-montserratreg">
                     <motion.img
-                        src="/bromo.jpg"
-                        className="w-[34rem] h-96 rounded-xl"
+                        src="/bg.jpg"
+                        className="w-[34rem] h-[22rem] rounded-xl bg-cover bg-center"
                         initial={{ scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8 }}

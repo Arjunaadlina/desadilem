@@ -7,7 +7,7 @@ function Hero() {
     <Element id="home" name="home">
     <div
       className="w-screen h-screen flex items-center justify-center flex-col bg-cover p-4 bg-center"
-      style={{ backgroundImage: "url('/heroo.jpg')" }}
+      style={{ backgroundImage: "url('/hero.jpg')" }}
     >
       <div className="">
         <motion.div

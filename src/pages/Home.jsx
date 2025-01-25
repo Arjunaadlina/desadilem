@@ -3,6 +3,7 @@ import Hero from "../components/Home/Hero";
 import Umkm from "../components/Home/Umkm";
 import Pariwisata from "../components/Home/Pariwisata";
 import About from "../components/Home/About";
+import Footer from "../components/Home/Footer";
 
 function Home() {
     return (
@@ -12,6 +13,7 @@ function Home() {
             <About />
             <Umkm />
             <Pariwisata /> 
+            <Footer />
         </div>
     )
 }

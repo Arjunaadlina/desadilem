@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { IoMenuOutline, IoCloseOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 const navItems = [
   { label: 'Beranda', href: 'home' },
@@ -13,6 +14,16 @@ const navItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate(); // Tambahkan useNavigate
+
+  const handleLoginClick = () => {
+    const token = localStorage.getItem('token'); // Cek token di localStorage
+    if (token) {
+      navigate('/admin'); // Arahkan ke halaman /admin jika token ada
+    } else {
+      navigate('/login'); // Arahkan ke halaman /login jika token tidak ada
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +37,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 font-lucida ${
-        scrolled ? `bg-white/40 backdrop-blur-md shadow-md  ` : 'bg-transparent'
+        scrolled ? `bg-white/40 backdrop-blur-md shadow-md` : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,7 +49,7 @@ const Navbar = () => {
             className="flex-shrink-0 cursor-pointer"
           >
             <Link to="home" className="text-2xl font-bold text-secondary" smooth={true} duration={500}>
-              <img src={'/logokknp.jpg'} alt="Logo" width={55} height={55} className='rounded-full' />
+              <img src={'/logokknp.jpg'} alt="Logo" width={55} height={55} className="rounded-full" />
             </Link>
           </motion.div>
 
@@ -50,15 +61,16 @@ const Navbar = () => {
                   key={item.href}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className='flex items-center justify-center'
+                  className="flex items-center justify-center"
                 >
                   <Link
                     to={item.href}
-                    smooth={true} duration={500}
+                    smooth={true}
+                    duration={500}
                     className={`px-3 py-2 rounded-md text-md cursor-pointer font-medium transition-colors ${
                       window.location.pathname === item.href
                         ? 'text-secondary bg-white'
-                        : 'text-gray-600 hover:text-white '
+                        : 'text-gray-600 hover:text-white'
                     }`}
                   >
                     {item.label}
@@ -68,9 +80,13 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Collaboration Button */}
-          <div className="hidden md:flex w-32 py-2 bg-secondary rounded-md items-center justify-center cursor-pointer font-bold text-white">
-            <p>Collab</p>
+          <div
+            onClick={handleLoginClick}
+            className="hidden md:flex bg-secondary rounded-md items-center justify-center cursor-pointer font-bold text-white"
+          >
+            <div className="hidden md:flex w-32 py-2 bg-secondary rounded-md items-center justify-center font-bold text-white">
+              <p>Login</p>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -78,7 +94,9 @@ const Navbar = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className={`inline-flex items-center justify-center p-2 rounded-md ${window.scrollY > 20 ? 'text-secondary' : 'text-white'} hover:text-white hover:bg-indigo-50 focus:outline-none`}
+              className={`inline-flex items-center justify-center p-2 rounded-md ${
+                window.scrollY > 20 ? 'text-secondary' : 'text-white'
+              } hover:text-white hover:bg-indigo-50 focus:outline-none`}
             >
               {isOpen ? <IoCloseOutline size={24} /> : <IoMenuOutline size={24} />}
             </motion.button>

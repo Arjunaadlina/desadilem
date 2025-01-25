@@ -34,7 +34,7 @@ function Umkm() {
                 className="mt-8 flex justify-between items-center gap-6 flex-col md:flex-row">
                 <Card image={"/pare.jpg"} title={"Keripik Pare"} desc={"Keripik gurih dengan olahan pare dan rempah."}/>
                 <Card image={"/bayam.jpg"} title={"Keripik Bayam"} desc={"Keripik gurih dengan olahan bayam dan rempah."}/>
-                <Card />
+                <Card image={"/balado.jpg"} title={"Varian Balado"} desc={"Keripik dengan varian rasa balado yang sedikit pedas."}/>
             </motion.div>
         </div>
         </Element>
