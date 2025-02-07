@@ -127,9 +127,11 @@ const Navbar = () => {
                   >
                     {item.label}
                   </Link>
+                  
                 </motion.div>
               ))}
-            </div>
+              <p onClick={handleLoginClick} className=' font-medium text-base px-3 text-white hover:text-white hover:bg-indigo-50 bg-secondary py-2 rounded-md'>Login</p>
+          </div>
           </motion.div>
         )}
       </AnimatePresence>

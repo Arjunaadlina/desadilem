@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IoMenuOutline, IoCloseOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import AdminUmkm from "../components/Admin/Umkm";
+import AdminPariwisata from "../components/Admin/AdminPariwisata";
 
 function Admin() {
   const [activePage, setActivePage] = useState("Dashboard");
@@ -23,7 +24,7 @@ function Admin() {
       case "Manage-umkm":
         return <AdminUmkm />;
       case "Pariwisata":
-        return <div>Ini adalah halaman pariwisata</div>;
+        return <AdminPariwisata />;
       case "Galeri":
         return <div>Ini adalah halaman Galeri</div>;
       default:
