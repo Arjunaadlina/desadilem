@@ -53,30 +53,30 @@ function AdminUmkm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name);
     formDataToSend.append("description", formData.description);
     formDataToSend.append("images", formData.images);
-
+  
     try {
-      const response = await axios.post(
-        "https://api-umkm.vercel.app/api/umkm",
-        formDataToSend,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-
-      setUmkmData((prev) => [...prev, response.data]); // Add new data to the list
-      setFormData({ name: "", description: "", images: null });
+      await axios.post("https://api-umkm.vercel.app/api/umkm", formDataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+  
       setIsModalOpen(false);
+      setFormData({ name: "", description: "", images: null });
       alert("UMKM berhasil ditambahkan!");
+  
+      // Fetch ulang data setelah submit
+      const response = await axios.get("https://api-umkm.vercel.app/api/umkm");
+      setUmkmData(response.data.data);
     } catch (error) {
       console.error("Error submitting data:", error);
       alert("Gagal menambahkan UMKM.");
     }
   };
+  
 
   const handleEditClick = (umkm) => {
     setSelectedUmkm(umkm); 
@@ -121,16 +121,20 @@ function AdminUmkm() {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Apakah Anda yakin ingin menghapus UMKM ini?");
-    if (!confirmDelete) return;
+    if (!window.confirm("Apakah Anda yakin ingin menghapus UMKM ini?")) return;
+  
+    const prevUmkmData = [...umkmData]; // Simpan data sebelum dihapus
+    setUmkmData((prev) => prev.filter((umkm) => umkm._id !== id));
   
     try {
       await axios.delete(`https://api-umkm.vercel.app/api/umkm/${id}`);
-      setUmkmData((prev) => prev.filter((umkm) => umkm._id !== id)); // Perbarui daftar UMKM
       alert("UMKM berhasil dihapus!");
+      setIsEditModalOpen(false);
     } catch (error) {
       console.error("Error deleting UMKM:", error);
       alert("Gagal menghapus UMKM.");
+      setUmkmData(prevUmkmData); 
+      setIsEditModalOpen(false);
     }
   };
   
@@ -149,16 +153,24 @@ function AdminUmkm() {
   };
 
   useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isModalOpen && modalRef.current && !modalRef.current.contains(e.target)) {
+        setIsModalOpen(false);
+      }
+      if (isEditModalOpen && modaleditRef.current && !modaleditRef.current.contains(e.target)) {
+        setIsEditModalOpen(false);
+      }
+    };
+  
     if (isModalOpen || isEditModalOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
     }
-
+  
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isModalOpen, isEditModalOpen]);
+  
 
   useEffect(() => {
     if (isEditModalOpen) {
