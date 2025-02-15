@@ -139,16 +139,15 @@ function AdminUmkm() {
   };
   
 
-  // Close the modal when clicking outside of it
-  const handleClickOutside = (e) => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      setIsModalOpen(false);
-    }
-  };
-
   const handleEditClickOutside = (e) => {
     if (modaleditRef.current && !modaleditRef.current.contains(e.target)) {
       setIsEditModalOpen(false);
+      setSelectedUmkm(null);
+      setFormData({
+        name: "",
+        description: "",
+        images: null,
+      });
     }
   };
 
@@ -159,6 +158,12 @@ function AdminUmkm() {
       }
       if (isEditModalOpen && modaleditRef.current && !modaleditRef.current.contains(e.target)) {
         setIsEditModalOpen(false);
+        setSelectedUmkm(null);
+        setFormData({
+          name: "",
+          description: "",
+          images: null,
+        });
       }
     };
   
